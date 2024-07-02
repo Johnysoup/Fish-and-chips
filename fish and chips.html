@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Ika me ngā Rīwai Parai&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card { border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-header { background-color: white; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-title { color: #6B8F9C; font-size: 24px; font-weight: bold; text-align: center; margin: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-subtitle { color: #666; font-size: 14px; text-align: center; margin-top: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-content { padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-text { font-size: 18px; margin-bottom: 16px; text-align: center; color: #333; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.message { color: #e53e3e; font-weight: 600; text-align: center; margin-bottom: 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.feedback { font-size: 14px; font-weight: 600; text-align: center; margin-top: 16px; padding: 8px; border-radius: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-footer { background-color: #f7fafc; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; padding: 16px; display: flex; flex-direction: column; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.button { background-color: #6B8F9C; color: white; border: none; border-radius: 4px; padding: 12px 16px; margin-bottom: 8px; font-size: 18px; font-weight: 600; cursor: pointer; transition: background-color 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.button:hover { background-color: #5A7A86; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="game-container" class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="card-title"&gt;Ika me ngā Rīwai Parai&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="card-subtitle"&gt;Fish and Chips&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="game-text" class="game-text"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p id="message" class="message"&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="choices" class="card-footer"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="feedback" class="feedback"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const gameData = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>start: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "You're hungry and decide to get some fish and chips. As you approach the shop, you see the owner outside.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Kia ora!", nextStep: "inside", correct: true, feedback: "Correct! 'Kia ora' is a common greeting in Te Reo Māori." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Ka kite!", nextStep: "gameOver", message: "Oh no! The owner looks confused and closes the shop early. You go home hungry.", feedback: "Incorrect. 'Ka kite' means 'See you later' and is used when leaving, not greeting." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Say nothing and walk past", nextStep: "gameOver", message: "The owner frowns and puts up a \"Closed\" sign. No fish and chips today!", feedback: "Incorrect. In Māori culture, it's polite to greet people, especially when entering a shop." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>inside: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "You enter the shop and see a long queue. The person in front of you turns around.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Tēnā koe", nextStep: "ordering", correct: true, feedback: "Correct! 'Tēnā koe' is a formal greeting to one person." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Mōrena", nextStep: "gameOver", message: "It's 7 PM! Everyone laughs, and you run out embarrassed.", feedback: "Incorrect. 'Mōrena' means 'Good morning' and isn't appropriate in the evening." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "E noho rā", nextStep: "gameOver", message: "The person thinks you're leaving and lets you out of the queue. No dinner tonight!", feedback: "Incorrect. 'E noho rā' means 'Goodbye' (said to someone staying) and isn't a greeting." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ordering: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "It's your turn to order. The owner asks, \"Kei te pēhea koe?\"",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Kei te pai ahau", nextStep: "final", correct: true, feedback: "Correct! 'Kei te pai ahau' means 'I'm good' and is an appropriate response." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Kei hea te wharepaku?", nextStep: "gameOver", message: "The owner points to the back, and you lose your spot in line.", feedback: "Incorrect. 'Kei hea te wharepaku?' means 'Where is the toilet?' which doesn't answer the owner's question." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "E hia te utu?", nextStep: "gameOver", message: "The owner looks confused and serves the next customer. You leave hungry.", feedback: "Incorrect. 'E hia te utu?' means 'How much does it cost?' which doesn't answer the owner's question about how you are." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>final: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "The owner hands you the wrapped fish and chips and says, \"Ka pai!\"",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Kia ora", nextStep: "almostWin", message: "Not quite right, but the owner appreciates the effort. You get your food, but it's a bit cold.", feedback: "Close, but not quite. 'Kia ora' is more of a greeting than a thank you." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Haere rā", nextStep: "win", correct: true, feedback: "Correct! 'Haere rā' means 'Goodbye' and is appropriate when leaving." },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Nau mai", nextStep: "gameOver", message: "The owner thinks you work there now and hands you an apron. No dinner tonight!", feedback: "Incorrect. 'Nau mai' means 'Welcome' and is not appropriate when leaving." }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gameOver: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "Game Over! Would you like to try again?",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Try Again", nextStep: "start" }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>almostWin: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "Almost perfect! Would you like to try again for a better ending?",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Try Again", nextStep: "start" },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "End Game", nextStep: "end" }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>win: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "Congratulations! You've successfully bought your fish and chips while practicing Te Reo Māori!",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: [</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "Play Again", nextStep: "start" },</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{ text: "End Game", nextStep: "end" }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>]</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>end: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "Thanks for playing! Ka pai!",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choices: []</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentStep = 'start';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateGame(step) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const state = gameData[step];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('game-text').textContent = state.text;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('message').textContent = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('feedback').textContent = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('feedback').style.backgroundColor = '';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const choicesContainer = document.getElementById('choices');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>choicesContainer.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>state.choices.forEach(choice =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const button = document.createElement('button');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.textContent = choice.text;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.className = 'button';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>button.onclick = () =&gt; makeChoice(choice);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>choicesContainer.appendChild(button);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function makeChoice(choice) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (choice.message) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('message').textContent = choice.message;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (choice.feedback) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const feedbackElem = document.getElementById('feedback');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>feedbackElem.textContent = choice.feedback;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (choice.correct) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>feedbackElem.style.color = 'white';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>feedbackElem.style.backgroundColor = 'green';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>feedbackElem.style.color = 'white';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>feedbackElem.style.backgroundColor = 'red';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentStep = choice.nextStep;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateGame(currentStep);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize the game</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateGame('start');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
